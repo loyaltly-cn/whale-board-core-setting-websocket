@@ -23,7 +23,7 @@ public class Websocket {
     public void connect(Session session){
 
         list.add(session);
-        System.out.println("open -> current size:"+list.size()+" value:"+list);
+//        System.out.println("open -> current size:"+list.size()+" value:"+list);
     }
 
     @OnMessage
@@ -31,7 +31,7 @@ public class Websocket {
         list.forEach(s ->{
             try {
                 s.getBasicRemote().sendBinary(ByteBuffer.wrap(msg));
-                System.out.println("onMessage:"+ Arrays.toString(msg));
+//                System.out.println("onMessage:"+ Arrays.toString(msg));
             }catch (IOException i){
                 i.printStackTrace();
             }
@@ -41,6 +41,6 @@ public class Websocket {
     @OnClose
     public void close(Session session){
         list.remove(session);
-        System.out.println("close -> current size:"+list.size()+" value:"+list);
+//        System.out.println("close -> current size:"+list.size()+" value:"+list);
     }
 }
