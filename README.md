@@ -55,11 +55,17 @@ public void message( Session session){
 
 @OnMessage可以获取当前的session 
 ```java
- try {
-    
-}catch (IOException i){
-    
-}
+  @OnMessage
+    public void message(byte[] msg Session sion){
+        list.forEach(s ->{
+            try {
+                s.getBasicRemote().sendBinary(ByteBuffer.wrap(msg));
+//                System.out.println("onMessage:"+ Arrays.toString(msg));
+            }catch (IOException i){
+                i.printStackTrace();
+            }
+        });
+    }
 ```
 之后可以做相应处理
 
